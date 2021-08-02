@@ -1,0 +1,41 @@
+<project name="Hello World" default="main" basedir=".">
+  <description>
+    Simple Ant build file
+  </description>
+  <!-- set global properties for this build -->
+  <property name="src" location="src"/>
+  <property name="bin" location="bin"/>
+
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory -->
+    <mkdir dir="${bin}"/>
+	<mkdir dir="doc"/>
+  </target>
+  
+  <target name="compile" depends="init"
+          description="compile the source " >
+    <!-- Compile the java code from ${src} into ${bin} -->
+    <javac 
+		   srcdir="${src}" 
+		   destdir="${bin}" 
+		   debug="on" includeantruntime="false">
+		   
+    </javac>
+  
+  </target>
+  
+<target name="run" depends="compile"
+          description="execute the binary files " >
+    <!-- Run the binary files from ${bin} -->
+    <java 
+		   classpath="${bin}" classname="HelloWorld">
+
+    </java>
+  
+  </target>
+  
+  <target name="main" depends="run"/>
+
+</project> 
